@@ -43,5 +43,6 @@ def load_plugins():
                 sys.stderr.write(f"Plugin {package_name} could not be found\n")
 
     for plugin in DEFAULT_PLUGINS:
-        mod = importlib.import_module(plugin)
-        pm.register(mod, plugin)
+        if len(plugin):
+            mod = importlib.import_module(plugin)
+            pm.register(mod, plugin)
