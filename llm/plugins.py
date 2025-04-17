@@ -5,7 +5,7 @@ import pluggy
 import sys
 from . import hookspecs
 
-DEFAULT_PLUGINS = ("llm.default_plugins.openai_models",)
+DEFAULT_PLUGINS: tuple[str] = (os.getenv("LLM_DEFAULT_PLUGINS", "llm.default_plugins.openai_models"),)
 
 pm = pluggy.PluginManager("llm")
 pm.add_hookspecs(hookspecs)
